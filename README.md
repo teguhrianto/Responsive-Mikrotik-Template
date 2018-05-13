@@ -1,5 +1,5 @@
 # Responsive Mikrotik Template / Themes
-Free Responsive Mikrotik Template /Themes Based on Bootstrap 4, you can customize the logo, text and etc.
+Free Responsive Mikrotik Template / Themes Based on Bootstrap 4, you can customize the logo, text and etc.
 Just plug and play on your mikrotik router.
 
 ## Installation

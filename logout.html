@@ -1,0 +1,79 @@
+<html>
+<head>
+<title>mikrotik hotspot > logout</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<meta http-equiv="pragma" content="no-cache">
+<meta http-equiv="expires" content="-1">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<link rel="shortcut icon" type="image/png" href="favicon.png"/>
+<link rel="stylesheet" type="text/css" media="all" href="packages/bootstrap/bootstrap.css">
+<link rel="stylesheet" type="text/css" media="all" href="css/theme.css">
+</head>
+
+<body style="background-image:url(img/bg.jpg);">
+<script language="JavaScript">
+<!--
+    function openLogin() {
+	if (window.name != 'hotspot_logout') return true;
+	open('$(link-login)', '_blank', '');
+	window.close();
+	return false;
+    }
+//-->
+</script>
+<section class="login-wrap">
+    <div class="login-box card" style="width: 600px;">
+        <div class="card-body">
+            <a href="$(link-login-only)?target=lv&amp;dst=$(link-orig-esc)" class="text-center d-block mb-3">
+                <img src="img/logo.png" alt="Home" height="100" />
+            </a>
+            <div class="row">
+            	<div class="col-md-12 text-center">
+                	<div class="alert alert-info">You have just logout</div>
+		        </div>
+            </div>
+            <table class="table table-striped table-responsive">
+                <tbody>
+	                <tr>
+	                	<td>user name</td>
+	                	<td>$(username)</td>
+	               	</tr>
+					<tr>
+						<td>IP address</td>
+						<td>$(ip)</td>
+					</tr>
+					<tr>
+						<td>MAC address</td>
+						<td>$(mac)</td>
+					</tr>
+					<tr>
+						<td>session time</td>
+						<td>$(uptime)</td>
+					</tr>
+					$(if session-time-left)
+					<tr>
+						<td>time left</td>
+						<td>$(session-time-left)</td>
+					</tr>
+					$(endif)
+					<tr>
+						<td>bytes up/down:</td>
+						<td>$(bytes-in-nice) / $(bytes-out-nice)</td>
+					</tr>
+                </tbody>
+            </table>
+	         <form action="$(link-login)" name="login" onSubmit="return openLogin()">
+	            <div class="col-md-12">
+	            	<input class="btn btn-info btn-lg btn-block text-uppercase" type="submit" value="Log In">
+	            </div>
+	        </form>
+        </div>
+  </div>
+</section>
+
+<script type="text/javascript" src="js/jquery.min.js"></script>
+<script type="text/javascript" src="packages/bootstrap/libraries/tether.js"></script>
+<script type="text/javascript" src="packages/bootstrap/libraries/popper.js"></script>
+<script type="text/javascript" src="packages/bootstrap/bootstrap.js"></script>
+</body>
+</html>

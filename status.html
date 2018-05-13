@@ -1,0 +1,110 @@
+<html>
+<head>
+<title>mikrotik hotspot > status</title>
+$(if refresh-timeout)
+<meta http-equiv="refresh" content="$(refresh-timeout-secs)">
+$(endif)
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<meta http-equiv="pragma" content="no-cache">
+<meta http-equiv="expires" content="-1">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<link rel="shortcut icon" type="image/png" href="favicon.png"/>
+<link rel="stylesheet" type="text/css" media="all" href="packages/bootstrap/bootstrap.css">
+<link rel="stylesheet" type="text/css" media="all" href="css/theme.css">
+<script language="JavaScript">
+<!--
+$(if advert-pending == 'yes')
+    var popup = '';
+    function focusAdvert() {
+	if (window.focus) popup.focus();
+    }
+    function openAdvert() {
+	popup = open('$(link-advert)', 'hotspot_advert', '');
+	setTimeout("focusAdvert()", 1000);
+    }
+$(endif)
+    function openLogout() {
+	if (window.name != 'hotspot_status') return true;
+        open('$(link-logout)', 'hotspot_logout', 'toolbar=0,location=0,directories=0,status=0,menubars=0,resizable=1,width=280,height=250');
+	window.close();
+	return false;
+    }
+//-->
+</script>
+</head>
+<body bottommargin="0" topmargin="0" leftmargin="0" rightmargin="0"
+$(if advert-pending == 'yes')
+	onLoad="openAdvert()"
+$(endif)
+style="background-image:url(img/bg.jpg);">
+<section class="login-wrap">
+    <div class="login-box card" style="width: 600px;">
+        <div class="card-body">
+            <a href="$(link-login-only)?target=lv&amp;dst=$(link-orig-esc)" class="text-center d-block mb-3">
+                <img src="img/logo.png" alt="Home" height="100" />
+            </a>
+            <div class="row">
+            	<div class="col-md-12 text-center">
+                	$(if error)
+		                <div class="alert alert-danger">$(error)</div>
+		            $(endif)
+
+		            $(if login-by == 'trial')
+		                <div class="alert alert-info">Welcome trial user!</div>
+		            $(elif login-by != 'mac')
+		                <div class="alert alert-info">Welcome $(username)!</div>
+		            $(endif)
+		        </div>
+            </div>
+            <form action="$(link-logout)" name="logout" onSubmit="return openLogout()">
+	            <table class="table table-striped table-responsive">
+	                <tbody>
+		                <tr>
+		                    <td>IP address:</td>
+		                    <td>$(ip)</td>
+		                </tr>
+		                <tr>
+		                    <td>bytes up/down</td>
+		                    <td>$(bytes-in-nice) / $(bytes-out-nice)</td>
+		                </tr>
+		                $(if session-time-left)
+		                <tr>
+		                    <td>connected / left:</td>
+		                    <td>$(uptime) / $(session-time-left)</td>
+		                </tr>
+		                $(else)
+		                <tr>
+		                    <td>connected:</td>
+		                    <td>$(uptime)</td>
+		                </tr>
+		                $(endif)
+		                $(if blocked == 'yes')
+						<tr>
+							<td>status:</td>
+							<td>
+								<a href="$(link-advert)" target="hotspot_advert">advertisement</a> required
+							</td>
+						</tr>
+						$(elif refresh-timeout)
+						<tr>
+							<td>status refresh:</td>
+							<td>$(refresh-timeout)</td>
+						</tr>
+						$(endif)
+	                </tbody>
+	            </table>
+	            $(if login-by-mac != 'yes')
+	            <div class="col-md-12">
+	            	<input class="btn btn-info btn-lg btn-block text-uppercase" type="submit" value="Log Off">
+	            </div>
+	            $(endif)
+	        </form>
+        </div>
+  </div>
+</section>
+<script type="text/javascript" src="js/jquery.min.js"></script>
+<script type="text/javascript" src="packages/bootstrap/libraries/tether.js"></script>
+<script type="text/javascript" src="packages/bootstrap/libraries/popper.js"></script>
+<script type="text/javascript" src="packages/bootstrap/bootstrap.js"></script>
+</body>
+</html>

@@ -1,0 +1,36 @@
+<html>
+<head>
+<title>mikrotik hotspot > error</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<meta http-equiv="pragma" content="no-cache">
+<meta http-equiv="expires" content="-1">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<link rel="shortcut icon" type="image/png" href="favicon.png"/>
+<link rel="stylesheet" type="text/css" media="all" href="packages/bootstrap/bootstrap.css">
+<link rel="stylesheet" type="text/css" media="all" href="css/theme.css">
+</head>
+<body style="background-image:url(img/bg.jpg);">
+<section class="login-wrap">
+    <div class="login-box card">
+        <div class="card-body">
+            <a href="$(link-login-only)?target=lv&amp;dst=$(link-orig-esc)" class="text-center d-block mb-3">
+                <img src="img/logo.png" alt="Home" height="100" />
+            </a>
+            <div class="row">
+            	<div class="col-md-12 text-center">
+		            <div class="alert alert-danger">Hotspot ERROR: $(error)</div>
+	                <p>
+	                    Login page: <a href="$(link-login)">$(link-login)</a>
+	                </p>
+		        </div>
+            </div>
+        </div>
+  </div>
+</section>
+
+<script type="text/javascript" src="js/jquery.min.js"></script>
+<script type="text/javascript" src="packages/bootstrap/libraries/tether.js"></script>
+<script type="text/javascript" src="packages/bootstrap/libraries/popper.js"></script>
+<script type="text/javascript" src="packages/bootstrap/bootstrap.js"></script>
+</body>
+</html>
